@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AgeController extends Controller
 {
     public function index() {
-        return 'Show the form where the user can enter their birth date and select the type of output they want.';
+        return view('age.index');
     }
 
     public function calculateAge() {
