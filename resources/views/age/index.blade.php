@@ -6,8 +6,8 @@
 
 @section('content')
     <h1 class='display-1'>Age Calculator</h1>
-    <p>This page will calculate your age in various time scales from seconds to years. The output is rounded down to the nearest whole number so it looks nicer but will show the complete age when the "all" option is selected.</p>
-    <form method='GET' action='index.php'>
+    <p>This page will calculate your age in various time scales from seconds to years. The output is rounded down to the nearest whole number so it looks nicer but will show the complete age (in weeks down to seconds) when the "all" option is selected.</p>
+    <form method='GET' action='/result/'>
         <div class='form-group col-md-6 offset-md-3'>
             <label for="day">Your Date of Birth:</label>
             <input type='date'
@@ -15,12 +15,11 @@
                    id='day'
                    name='day'
                    min='1901-12-14'
-                   max='2018-02-01'
-                   value=''
-                   required
-                   pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
+                   max='{{ $today }}'
+                   value='{{ $day or $today}}'
+                   required>
             <small id="dateHelp"
-                   class="form-text text-muted">Dates are limited to between 1901/12/14 and today's date.
+                   class="form-text text-muted">Dates are limited to between 1901-12-14 and {{ $today }}.
             </small>
         </div>
         <div class='form-group'>
@@ -79,7 +78,7 @@
                        type="checkbox"
                        value="1"
                        id="check1"
-                       name='leapYears'
+                       name='leapYears' {{ isset($leapYears) ? 'checked' : '' }}>
                 <label class="form-check-label" for="check1">
                     Calculate number of leap years passed.
                 </label>
@@ -87,4 +86,13 @@
         </div>
         <button type="submit" class="btn btn-primary">Calculate</button>
     </form>
+
+    @include('modules.error-form')
+
+    @if(isset($age))
+        <h1 class="display-4">{{ $age }}</h1>
+    @endif
+    @if(isset($leapYears))
+        <h1>{{ $leapYears }}</h1>
+    @endif
 @endsection

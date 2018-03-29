@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'AgeController@index');
-Route::get('/calculateAge', 'AgeController@calculateAge');
+Route::get('/result', 'AgeController@result');
