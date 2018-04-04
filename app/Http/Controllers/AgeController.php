@@ -21,32 +21,32 @@ class AgeController extends Controller
         $currentMonth = date('m');
         $result = $now - strtotime($day);
         if ($timeScale == 'secs') {
-            return 'You are approximately ' . $result . ' seconds old.';
+            return 'You are approximately ' . $result . ' second(s) old.';
         } else if ($timeScale == 'mins') {
             $result = bcdiv($result, 60, 0);
 
-            return 'You are approximately ' . $result . ' minutes old.';
+            return 'You are approximately ' . $result . ' minute(s) old.';
         } else if ($timeScale == 'hours') {
             $result = bcdiv($result, 3600, 0);
 
-            return 'You are approximately ' . $result . ' hours old.';
+            return 'You are approximately ' . $result . ' hour(s) old.';
         } else if ($timeScale == 'days') {
             $result = bcdiv($result, 86400, 0);
 
-            return 'You are approximately ' . $result . ' days old.';
+            return 'You are approximately ' . $result . ' day(s) old.';
         } else if ($timeScale == 'weeks') {
             $result = bcdiv($result, 604800, 0);
 
-            return 'You are approximately ' . $result . ' weeks old.';
+            return 'You are approximately ' . $result . ' week(s) old.';
         } else if ($timeScale == 'months') {
             $result = (($currentYear - $selectedYear) * 12) + ($currentMonth - $selectedMonth);
 
-            return 'You are approximately ' . $result . ' months old.';
+            return 'You are approximately ' . $result . ' month(s) old.';
         } else if ($timeScale == 'years') {
             $months = (($currentYear - $selectedYear) * 12) + ($currentMonth - $selectedMonth);
             $result = bcdiv($months, 12, 0);
 
-            return 'You are approximately ' . $result . ' years old.';
+            return 'You are approximately ' . $result . ' year(s) old.';
         } else {
             $weeks = bcdiv($result, 604800, 0);
             $days = bcdiv(bcmod($result, 604800), 86400, 0);
@@ -54,7 +54,7 @@ class AgeController extends Controller
             $mins = bcdiv(bcmod(bcmod(bcmod($result, 604800), 86400), 3600), 60, 0);
             $secs = bcmod(bcmod(bcmod(bcmod($result, 604800), 86400), 3600), 60);
 
-            return 'You are approximately ' . $weeks . ' weeks ' . $days . ' days ' . $hours . ' hours ' . $mins . ' minutes and ' . $secs . ' seconds old.';
+            return 'You are approximately ' . $weeks . ' week(s) ' . $days . ' day(s) ' . $hours . ' hour(s) ' . $mins . ' minute(s) and ' . $secs . ' second(s) old.';
         }
     }
 

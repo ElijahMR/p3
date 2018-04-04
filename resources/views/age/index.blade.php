@@ -6,7 +6,7 @@
 
 @section('content')
     <h1 class='display-1'>Age Calculator</h1>
-    <p>This page will calculate your age in various time scales from seconds to years. The output is rounded down to the nearest whole number so it looks nicer but will show the complete age (in weeks down to seconds) when the "all" option is selected.</p>
+    <p>This page will calculate your age in various time scales from seconds to years. The output is rounded down to the nearest whole number so it looks nicer but will show the complete age (in weeks down to seconds) when the "Combined" option is selected.</p>
     <form method='GET' action='/result/'>
         {{ csrf_field() }}
         <div class='form-group col-md-6 offset-md-3'>
