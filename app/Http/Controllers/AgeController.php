@@ -89,7 +89,7 @@ class AgeController extends Controller
 
         $today = date('Y-m-d');
         $age = $this->calculateAge($request->input('timeScale'), $request->input('day'));
-        $leapYears = '';
+        $leapYears = 'no';
         if ($request->has('leapYears')) {
             $leapYears = $this->leapYearCalculator($request->input('day'));
         }
@@ -98,7 +98,8 @@ class AgeController extends Controller
             'age' => $age,
             'leapYears' => $leapYears,
             'today' => $today,
-            'day' => $request->input('day')
+            'day' => $request->input('day'),
+            'timeScale' => $request->input('timeScale')
         ]);
     }
 }
